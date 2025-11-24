@@ -3,6 +3,8 @@ import datetime
 from datetime import UTC
 
 secret = "supersecretkey"
+
+# Create JWT
 payload = {
     "username": "fake_user",
     "password": "fake_pass",
@@ -10,4 +12,8 @@ payload = {
 }
 
 token = jwt.encode(payload, secret, algorithm="HS256")
-print(token)
+print("JWT:", token)
+
+# Decode JWT
+decoded = jwt.decode(token, secret, algorithms=["HS256"])
+print("Decoded:", decoded)
